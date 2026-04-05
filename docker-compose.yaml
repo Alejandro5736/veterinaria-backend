@@ -1,0 +1,37 @@
+
+services:
+  # Base de datos
+ # Base de datos
+  db:
+    image: mysql:8.0
+    container_name: mysql_vet
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: veterinaria_db
+    ports:
+      - "3307:3306" 
+
+  # SonarQube para análisis estático
+
+  sonarqube:
+    image: sonarqube:lts-community
+    container_name: sonarqube_vet
+    ports:
+      - "9001:9000"  
+    networks:
+      - internal
+
+  # Jenkins para CI/CD
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins_vet
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    networks:
+      - internal
+
+networks:
+  internal:
