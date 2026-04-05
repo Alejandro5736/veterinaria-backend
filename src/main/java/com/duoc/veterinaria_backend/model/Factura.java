@@ -1,4 +1,4 @@
-package com.duoc.veterinaria_backend.repository;
+package com.duoc.veterinaria_backend.model;
 
 import jakarta.persistence.*; // Nota: En versiones nuevas de Spring Boot se usa jakarta
 import java.time.LocalDateTime;
